@@ -1,6 +1,5 @@
-
 function firstURL (){
-    var answer = fetch('https://api.kickfire.com/ip?ipkey=45cc7d7e4b872091').then(function(res){
+    var answer = fetch('https://api.kickfire.com/ip?ipkey=**********').then(function(res){
         res.json().then(function(hola){
             console.log('hola',hola)
             secondURL(hola)
@@ -9,7 +8,7 @@ function firstURL (){
 }
 
 function secondURL(url){   
-    var newURL = 'https://api.kickfire.com/v3/company:(all)?ip='+url+'&key=7ec15802192a68c3'
+    var newURL = 'https://api.kickfire.com/v3/company:(all)?ip='+url+'&key=**********'
     var nextURL = fetch(newURL).then(function(res){
         res.json().then(function(hola){
             console.log('hola',hola['data'][0])
