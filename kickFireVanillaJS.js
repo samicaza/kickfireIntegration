@@ -1,8 +1,7 @@
 function firstURL (){
     var answer = fetch('https://api.kickfire.com/ip?ipkey=**********').then(function(res){
-        res.json().then(function(hola){
-            console.log('hola',hola)
-            secondURL(hola)
+        res.json().then(function(response){
+            secondURL(response)
         })
     })    
 }
@@ -10,9 +9,8 @@ function firstURL (){
 function secondURL(url){   
     var newURL = 'https://api.kickfire.com/v3/company:(all)?ip='+url+'&key=**********'
     var nextURL = fetch(newURL).then(function(res){
-        res.json().then(function(hola){
-            console.log('hola',hola['data'][0])
-            setCustomAttributes(hola['data'][0])
+        res.json().then(function(response){
+            setCustomAttributes(response['data'][0])
         })
     })   
 } 
@@ -31,10 +29,7 @@ function setCustomAttributes(data){
     attributes['kickFireTradeName'] = kickFireData['tradeName']
     attributes['kickFireWebsite'] = kickFireData['website']
     attributes['kickFireSICCode'] = kickFireData['sicCode']
-
-    console.log('data object is',data)
-    console.log('attributes object is',attributes)
-
+    
     // window.optimizely = window.optimizely || [];
     // window["optimizely"].push({
     //     "type": "user",
